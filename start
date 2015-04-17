@@ -112,4 +112,9 @@ if [ -n "${DB_USER}" -o -n "${DB_NAME}" ]; then
   /usr/bin/mysqladmin --defaults-file=/etc/mysql/debian.cnf shutdown
 fi
 
-exec /usr/bin/mysqld_safe
+
+echo "##############################"
+echo "####        DONE           ###"
+echo "##############################"
+
+service mysql start

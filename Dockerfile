@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
 RUN apt-get update \
- && apt-get install -y mysql-server \
+ && apt-get install -y mysql-server-5.6 mysql-client-5.6 \
  && rm -rf /var/lib/mysql/mysql \
  && rm -rf /var/lib/apt/lists/* # 20150323
 
@@ -20,6 +20,4 @@ EXPOSE 3306
 VOLUME ["/var/lib/mysql"]
 VOLUME ["/run/mysqld"]
 
-CMD ["/start"]
-
-USER strider
+#CMD ["/start"]
