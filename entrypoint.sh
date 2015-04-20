@@ -10,4 +10,4 @@ mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'aas_test'@'localhost' WITH GRA
 
 exec "$@"
 
-	
+

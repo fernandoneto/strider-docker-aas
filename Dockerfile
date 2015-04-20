@@ -7,15 +7,14 @@ ENV MYSQL_USER aas_test
 ENV MYSQL_PASSWORD aas_test
 ENV MYSQL_MAJOR 5.6
 ENV MYSQL_VERSION 5.6.24
-WORKDIR /home/strider/workspace
-ENV HOME /home/strider
+WORKDIR /home
+ENV HOME /home
 
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 RUN apt-get update && apt-get install -y git nodejs-legacy npm procps nano perl --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 RUN apt-key adv --keyserver pool.sks-keyservers.net --recv-keys A4A9406876FCBD3C456770C88C718D3B5072E1F5
 RUN npm install -g strider-docker-slave@latest
-RUN mkdir -p /home/strider/workspace/
 RUN locale-gen en_US.UTF-8
 RUN echo "deb http://repo.mysql.com/apt/debian/ wheezy mysql-${MYSQL_MAJOR}" > /etc/apt/sources.list.d/mysql.list
 RUN { \
@@ -31,4 +30,4 @@ VOLUME /var/lib/mysql
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["strider-docker-slave"]
+CMD strider-docker-slave
