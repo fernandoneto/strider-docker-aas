@@ -11,5 +11,3 @@ mysql -u root -e "CREATE USER 'aas_test'@'localhost' IDENTIFIED BY 'aas_test'"
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'aas_test'@'localhost' WITH GRANT OPTION;" 
 
 exec "$@"
-
-
